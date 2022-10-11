@@ -1,0 +1,8 @@
+li button{
+    display: none;
+}
+
+li:hover button {
+    display: inline-block;
+}
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reVue.css">
+</head>
+<body>
+    
+<div id="app">
+    <input-component @custom-input="inputHandler" v-model="inputText"></input-component>
+    <input-component2 @custom-input="input2Handler" ></input-component2>
+    <filter-component @filter="filterHandler"></filter-component>
+    <ul>
+        <li is="list-item-component" 
+        v-for="item of filterList" 
+        :key="item.timestamp" 
+        :item="item" 
+        :editing="editing" 
+        @change="changeHandler"
+        @delete="deleteHandler" 
+        @edit="editHandler" 
+        @complete="completeHandler" 
+        @cancel="cancelHandler"></li>
+        <!-- <li v-for="(item,index) of filterList" :key="item.timestamp">
+            <template v-if="editing === item">
+                <input type="text" v-model="editingText">
+                <button @click="completeHandler">完成</button>
+                <button @click="cancelHandler">取消</button>
+            </template>
+            <template v-else>
+                <input type="checkbox" v-model="item.status">
+                {{ item.content }}
+                <button @click="editHandler(item)">修改</button>
+                <button @click="deleteHandler(item)">刪除</button>   
+            </template>
+        </li> -->
+    </ul>
+</div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+    <script src="reVue.js"></script>
+</body>
+</html>
